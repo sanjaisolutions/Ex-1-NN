@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:R.SANJAI</H3>
+<H3>ENTER YOUR REGISTER NO:212223040180</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE:29/08/24</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,138 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+### IMPORT LIBRARIES : 
+
+```py
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+from scipy import stats
+import numpy as np
+```
+
+### READ THE DATA: 
+```py
+df=pd.read_csv("Churn_Modelling.csv")
+```
+
+### CHECK DATA: 
+```py
+df.head()
+df.tail()
+df.columns
+```
+
+### CHECK THE MISSING DATA:
+```py
+df.isnull().sum()
+```
+
+### ASSIGNING X:
+```py
+X = df.iloc[:,:-1].values
+X
+```
+
+### ASSIGNING Y:
+```py
+Y = df.iloc[:,-1].values
+Y
+```
+
+### CHECK FOR OUTLIERS:
+```py
+df.describe()
+```
+
+### DROPPING STRING VALUES DATA FROM DATASET:
+```py
+data = df.drop(['Surname', 'Geography','Gender'], axis=1)
+```
+
+### CHECKING DATASETS AFTER DROPPING STRING VALUES DATA FROM DATASET:
+```py
+data.head()
+```
+
+### NORMALIE THE DATASET USING (MinMax Scaler):
+```py
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+```
+
+### SPLIT THE DATASET:
+```py
+X=df.iloc[:,:-1].values
+Y=df.iloc[:,-1].values
+print(X)
+print(Y)
+```
+
+### TRAINING AND TESTING MODEL:
+```py
+X_train ,X_test ,Y_train,Y_test=train_test_split(X,Y,test_size=0.2)
+print("X_train\n")
+print(X_train)
+print("\nLenght of X_train ",len(X_train))
+print("\nX_test\n")
+print(X_test)
+print("\nLenght of X_test ",len(X_test))
+```
+
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### DATA CHECKING:
+![Screenshot 2024-08-29 114758](https://github.com/user-attachments/assets/2a124631-d567-4151-a7a0-250220025b11)
+
+
+
+
+### MISSING DATA:
+
+![Screenshot 2024-08-29 114758](https://github.com/user-attachments/assets/747d9885-82b4-4ccf-b8ad-2fc1696ec16c)
+
+
+### DUPLICATES IDENTIFICATION:
+![Screenshot 2024-08-29 114758](https://github.com/user-attachments/assets/e9e4f5f3-693d-4b5e-998d-1b4a82108c62)
+
+
+
+
+
+### VALUE OF Y:
+![Screenshot 2024-08-29 114758](https://github.com/user-attachments/assets/f8401f9c-9e31-4feb-8f45-c162c1f2a0a1)
+
+
+
+### OUTLIERS:
+![Screenshot 2024-08-29 114758](https://github.com/user-attachments/assets/068255fd-20ec-4ec9-8c14-6563a6b9448b)
+
+
+
+### CHECKING DATASET AFTER DROPPING STRING VALUES DATA FROM DATASET:
+![Screenshot 2024-08-29 114841](https://github.com/user-attachments/assets/f9ee3ca4-9c02-4714-98b3-f0d7dcee1acf)
+
+
+
+### NORMALIZE THE DATASET:
+![Screenshot 2024-08-29 114841](https://github.com/user-attachments/assets/a9716787-562d-435d-ac7f-4dbd3e8ade5d)
+
+
+
+### SPLIT THE DATASET:
+![Screenshot 2024-08-29 114854](https://github.com/user-attachments/assets/9de89637-a0bb-4d8a-bc32-036ea42277a4)
+
+
+### TRAINING AND TESTING MODEL:
+
+![Screenshot 2024-08-29 114854](https://github.com/user-attachments/assets/9be3039c-a960-44c5-985a-6deedb4cfcda)
+
+
 
 
 ## RESULT:
